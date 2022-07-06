@@ -35,8 +35,7 @@ const Layout = ({children}) => {
     <div className="h-screen"> 
            <NavBar abrirCerrar={toggleOpen}  />
            {aparecer && <MiniMenu abrirCerrarNuevo={toggleOpen}/>}
-            <ItemListContainer greeting={'Hola soy una props'}
-                />
+           
            
            
            {children}

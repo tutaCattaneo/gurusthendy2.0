@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CardWidget = () => {
+const CardWidget = (props) => {
   return (
     <>
     <div className="flex-none mr-10">

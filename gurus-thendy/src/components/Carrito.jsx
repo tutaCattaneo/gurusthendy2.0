@@ -1,9 +1,9 @@
 import React from 'react'
-
+import ItemListContainer from './ItemListContainer'
 const Carrito = () => {
   return (
-    <div className="bg-yellow-500 h-screen">
-        Carrito
+    <div className=" h-screen">
+       <ItemListContainer greeting={'Hola soy una props'}/>
    </div>
   )
 }
