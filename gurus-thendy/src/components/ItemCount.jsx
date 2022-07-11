@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 
 const ItemCount = ({stock,initial,onAdd,}) => {
-
+    const [disable,setDisable]=useState(false)
     const [count, setCount] = useState(initial);
 
     const handleClick = () => {
@@ -22,8 +22,12 @@ const ItemCount = ({stock,initial,onAdd,}) => {
       <button onClick={handleClick} className="btn bg-white text-black">+</button>
       <button onClick={decrementar}className="btn btn-ghost bg-white text-black">-</button>
       <button onClick={()=>{
-       if(count >= stock){
+       if(stock<count){
+        alert("pasaste la cuenta")
+        setDisable(true)
+       }else{
         onAdd(count);
+        console.log(count)
        }
 
       }} className="btn bg-white text-black">Agregar al carrito</button>
