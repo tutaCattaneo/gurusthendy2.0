@@ -4,6 +4,7 @@ const Carrito = () => {
   return (
     <div className=" h-screen">
        <ItemListContainer greeting={'Hola soy una props'}/>
+      
    </div>
   )
 }
