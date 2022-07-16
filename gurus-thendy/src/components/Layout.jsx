@@ -1,48 +1,28 @@
 import React from 'react'
-import MiniMenu from './MiniMenu'
 import NavBar from './NavBar'
+import Menusito from '../components/Menusito/Menusito'
 import ItemListContainer from './ItemListContainer'
-
-import Footer from '../paginas/Footer'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import ItemDetailContainer from './ItemDetailCointainer'
+import { BrowserRouter,Outlet, Routes, Route } from "react-router-dom";
 const Layout = ({children}) => {
-    const[aparecer, setAparecer]= useState(false);
+   const [isOpen, setIsOpen] = React.useState(false);
+    const toggle = () => setIsOpen(!isOpen);
 
-    useEffect(()=>{
-        const ocultarMenu = () => {
-         if(window.innerWidth >768 && aparecer){
-           setAparecer(false);
-         }
-        };
-   
-        window.addEventListener("resize",ocultarMenu);
-        
-        return()=>{
-          window.removeEventListener("resize",ocultarMenu);
-        }
-    });
-   
-   
-   
-    const toggleOpen = () => {
-         setAparecer(!aparecer);
-     };
-   
+
+
 
 
   return (
-    <div className="h-screen"> 
-           <NavBar abrirCerrar={toggleOpen}  />
-           {aparecer && <MiniMenu abrirCerrarNuevo={toggleOpen}/>}
-           
-           
-           
-           {children}
-           <Footer/>
-            
-           
+    
+    <div className='h-screen'>
+    
+     <NavBar toggle={toggle}/>
+      {isOpen && <Menusito toggleNuevo={toggle}/>}
+      
+      {children}
     </div>
+     
+   
   )
 }
 

@@ -2,9 +2,7 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div className=" h-screen">
-      Contact
-   </div>
+    <div className='bg-yellow-500 h-screen'>Contact</div>
   )
 }
 

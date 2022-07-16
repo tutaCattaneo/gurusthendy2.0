@@ -1,40 +1,31 @@
-import React,{useState,useEffect}from 'react'
-import ItemCount from './ItemCount'
-import ItemList from './ItemList'
 
+import React, {  useState, useEffect } from "react";
+import ItemList from "./ItemList"
+import {useParams } from "react-router-dom";
+const ItemListContainer = () => {
+    let {nombreCategoria} = useParams()
+    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
+    
+    
 
-const ItemListContainer = ({greeting}) => {
-  const products = [
-    {
-      id: 1,
-      name: 'Basic Tee',
-      href: '#',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-      imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
-      color: 'Black',
-    }
-    // More products...
-  ]
-   const [load,setLoad]=useState(true)
-
-
-    useEffect(()=>{
-      setTimeout(setLoad,2000,false);
-      console.log("useEffect");
-    },[]);
-
-
-
+    useEffect(() => {
+        fetch(nombreCategoria === undefined ? 'https://fakestoreapi.com/products' : 'https://fakestoreapi.com/products/category/'+ nombreCategoria )
+          .then((res) => res.json())
+          .then((json) => {
+            setTimeout(setLoading,2000,false);
+            setProducts(json);
+          })
+          .catch(() => {
+            alert('Ocurrio un error inesperado');
+          });
+      }, [products]);
   return (
     <div>
-      {greeting}
-      <ItemCount 
-      stock={5}
-      initial={1}
-      onAdd={(n)=>alert(`Agregados ${n} productos`)}/>
-         {load ?(<h1>CARGANDO</h1>):(<ItemList items={products}/>)}
-    </div>
+    {loading ? (<h3>CARGANDO</h3>) : (<ItemList items={products}/>)}
+    
+   </div>
+
   )
 }
 
