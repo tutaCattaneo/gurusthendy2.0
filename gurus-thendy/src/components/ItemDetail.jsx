@@ -5,7 +5,7 @@ import { Link, NavLink} from "react-router-dom";
 
 function ItemDetail ({item}) {
 
-    const [sendStatus, setsendSatus] = useState(true)
+    const [sendStatus, setsendSatus] = useState(false)
     console.log(sendStatus)
 
     function onAddEvent(n) {

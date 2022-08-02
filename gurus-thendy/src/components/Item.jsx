@@ -1,7 +1,9 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {Link} from "react-router-dom";
-
+import {CartContext} from '../main'
 const Item = ({id,title,description,price,image}) => {
+  const cartContext = useContext(CartContext);
+  console.log(cartContext)
   return (
     <div className="card w-80 bg-base-100 shadow-xl text-center">
         <figure>

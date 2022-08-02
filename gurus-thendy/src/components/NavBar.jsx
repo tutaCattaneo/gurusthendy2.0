@@ -1,12 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import CardWidget from './CardWidget'
+import Guitarra from './guitarra.png'
+
 
 const NavBar = ({toggle}) => {
   return (
     <nav className='flex justify-between items-center h-16 bg-white text-black relative shadow-sm'>
-    <Link to="/" className="pl-8">
-                LOGO
+    <Link to="/Home" className="pl-8">
+               <img src={Guitarra} alt="Guitarra" className="h-8 w-8"/> 
          </Link>
 
      <div className='px-4 cursor-pointer md:hidden'onClick={toggle}>
@@ -16,9 +18,7 @@ const NavBar = ({toggle}) => {
      </div>
 
      <div className='pr-8 hidden md:block'>
-      <Link to='/Home'className='pl-8'>
-        Home
-      </Link>
+      <Link to='/Home'className='pl-8'> Home</Link>
       <Link to='/About'className='pl-8'>
         About
       </Link>

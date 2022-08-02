@@ -13,7 +13,7 @@ const ItemListContainer = () => {
         fetch(nombreCategoria === undefined ? 'https://fakestoreapi.com/products' : 'https://fakestoreapi.com/products/category/'+ nombreCategoria )
           .then((res) => res.json())
           .then((json) => {
-            setTimeout(setLoading,2000,false);
+            setTimeout(setLoading,1000,false);
             setProducts(json);
           })
           .catch(() => {
